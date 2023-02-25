@@ -5,9 +5,9 @@ const input = document.querySelector('input');
 const textarea = document.querySelector('textarea');
 const formData = {};
 
+populateForm()
 form.addEventListener('input', throttle(onFormInput, 500));
 form.addEventListener('submit', onFormSubmit);
-populateForm();
 
 function onFormInput(event) {
   formData[event.target.name] = event.target.value;
@@ -24,7 +24,7 @@ function onFormSubmit(event) {
 function populateForm() {
   const savedInputForm = JSON.parse(localStorage.getItem('feedback-form-state'));
   
-  if (savedInputForm !== {}) {
+  if (savedInputForm) {
     input.value = savedInputForm.email;
     textarea.value = savedInputForm.message;
   }
